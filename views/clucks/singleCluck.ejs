@@ -1,0 +1,36 @@
+<%- include("../partials/header") %> 
+
+<div class="card mb-4">
+  <% if (cluck.image_url) { %>
+    <img
+      class="card-img-top"
+      src="<%= cluck.image_url %>"
+      alt="Card image"
+      width="400">
+  <% } %>
+  <div class="card-body">
+
+    <h5 class="card-title"><%= cluck.username %></h5>
+    <p class="card-text">
+      <%= cluck.content %> <br>
+      <em>Posted at <%= cluck.createdAt %> by <%= cluck.username %></em>
+    </p>
+
+    <!-- Forms only support the methods GET and POST. -->
+    <form action="/clucks/<%= cluck.id %>" method="POST">
+      <input
+      type="hidden"
+      name="_method"
+      value="DELETE">
+
+      <input
+        type="submit"
+        value="Delete"
+        class="btn btn-outline-success">
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/footer") %>
+
+

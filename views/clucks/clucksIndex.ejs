@@ -1,0 +1,37 @@
+<%- include("../partials/header") %> 
+<div style="text-align:center">
+<% if (username) { %>
+<h1>HI <%= username.toUpperCase() %>, <br>WELCOME TO CLUCKR 🐓</h1>
+<% } else { %>
+<h1> Please sign in to Cluckr. </h1>
+<% } %>
+</div>
+
+<% if (username) { %>
+
+<form action="/sign_out" method="POST" class="form-inline">
+  <button class="btn btn-outline-dark" type="submit">Sign Out</button>
+</form>
+<% } else { %>
+
+<form action="/sign_in" method="POST" class="form-inline">
+  <input class="form-control mr-2" name="username" placeholder="Username">
+  <button class="btn btn-outline-dark" type="submit">Sign In</button>
+</form>
+<% } %>
+</p>
+
+<div class="cluck-cards">
+<% for (let cluck of clucks) { %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title">Posted by <%= cluck.username %></h3>
+      <p class="card-text" style="text-align:center"><h5>Content:</h5><br> <%= cluck.content %></p>
+      <a href="/clucks/<%= cluck.id %>" class="card-link text-success">View More</a>
+    </div>
+  </div>
+<% } %>
+</div>
+
+
+<%- include("../partials/footer") %> 

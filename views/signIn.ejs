@@ -1,0 +1,18 @@
+<%- include("./partials/header") %> 
+
+<% if (username) { %>
+
+   <h1> Welcome <%= username %> </h1>
+
+
+<form action="/sign_out" method="POST" class="form-inline">
+  <button class="btn btn-outline-dark" type="submit">Sign Out</button>
+</form>
+<% } else { %>
+
+<form action="/sign_in" method="POST" class="form-inline">
+  <input class="form-control mr-2" name="username" placeholder="Username">
+  <button class="btn btn-outline-dark" type="submit">Sign In</button>
+</form>
+<% } %>
+<%- include("./partials/footer") %> 
